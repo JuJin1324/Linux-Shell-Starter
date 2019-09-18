@@ -8,3 +8,9 @@
 * [리눅스 grep 명령어 사용법. (Linux grep command) - 리눅스 문자열 검색](https://recipes4dev.tistory.com/157)
 * [리눅스 awk 명령어 사용법. (Linux awk command) - 리눅스 파일 텍스트 데이터 검사, 조작, 출력.](https://recipes4dev.tistory.com/171?category=768818)
 * [리눅스(Linux) sort/uniq 명령어](https://websecurity.tistory.com/80)
+
+### 서버 제조사 확인 명령어
+```bash
+# dmidecode | more
+```
+
