@@ -14,3 +14,5 @@
 # dmidecode | more
 ```
 
+### hosts 파일 위치
+* `/etc/hosts`
