@@ -1,6 +1,17 @@
 # Linux-terminal
 리눅스 터미널에서 사용하는 명령어 관련 팁 정리
 
+## ssh server
+### 설치 
+* 우분투(Ubuntu) : `apt-get install openssh-server`
+### 설정
+* 위치 : /etc/ssh
+* ssh_host_res_key : 해당 리눅스 접속을 위한 프라이빗 키
+* sshd_config 
+  * ssh 접근을 위한 config 파일
+  * 변경 이후 `$ service ssh restart`로 재시작한다.
+* 참고사이트 : [링크](http://programmingskills.net/archives/315)
+
 ### 네트워크 관련 명령어
 * [네트워크 관련 명령어](https://github.com/JuJin1324/Linux-terminal/wiki/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EA%B4%80%EB%A0%A8-%EB%AA%85%EB%A0%B9%EC%96%B4)
 
