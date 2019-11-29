@@ -1,6 +1,42 @@
 # Linux-terminal
 리눅스 터미널에서 사용하는 명령어 관련 팁 정리
 
+## 서비스 등록
+### 실행 스크립트 생성
+* /etc/init.d 디렉토리 밑에 실행 스크립트 생성 
+* 실행스크립트 규격
+```
+case $1 in
+ start)
+   <실행할 명령이나 스크립트명>
+   ;;
+ stop)
+   <중지할 명령이나 스크립트명>
+   ;;
+ restart)
+   <중지하고 다시 시작할 명령이나 스크립트명>
+   ;;
+ *)
+   echo "Usage: /etc/init.d/$NAME {start|stop|restart}"
+   exit 1;
+   ;;
+esac 
+
+exit 0
+```
+### update-rc.d 로 서비스 등록
+* update-rc.d [-n | -f] <스크립트명> [remove | defaults] <실행순서>
+* 서비스 등록 예시) /etc/init.d 아래 `start_EXAMPLE` 실행 파일 있고 실행 순서를 99로 원한다고 가정
+```
+# update-rc.d start_EXAMPLE defaults 99
+```
+* 서비스 삭제 예시)
+`# update-rc.d -f start_EXAMPLE remove`
+* 참조 사이트 : [링크](https://wiki.debianusers.or.kr/index.php?title=Update-rc.d)
+
+### 주의 사항
+* 서비스 실행시에 실행 디렉토리는 루트(/)로 지정됨으로 해당 실행파일과 상대경로로 연결된 파일이 있을 경우 정상 동작하지 않을 수 있다.
+
 ## ssh server
 ### 설치 
 * 우분투(Ubuntu) : `apt-get install openssh-server`
