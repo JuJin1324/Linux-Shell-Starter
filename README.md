@@ -24,7 +24,7 @@ esac
 
 exit 0
 ```
-* 서비스 스크립트 예제
+* 서비스 스크립트 예제 : 실제 실행 파일은 myservice.sh(사용자가 만든 실행 파일)
 ```
 $ cd /etc/init.d
 $ vi my_service
@@ -57,12 +57,12 @@ exit 0
 ```
 ### update-rc.d 로 서비스 등록
 * update-rc.d [-n | -f] <스크립트명> [remove | defaults] <실행순서>
-* 서비스 등록 예시) /etc/init.d 아래 `start_EXAMPLE` 실행 파일 있고 실행 순서를 99로 원한다고 가정
+* 서비스 등록 예시) /etc/init.d 아래 `my_service` 서비스 스크립트 파일 있고 실행 순서를 99로 원한다고 가정
 ```
-# update-rc.d start_EXAMPLE defaults 99
+# update-rc.d my_service defaults 99
 ```
 * 서비스 삭제 예시)
-`# update-rc.d -f start_EXAMPLE remove`
+`# update-rc.d -f my_service remove`
 * 참조 사이트 : [링크](https://wiki.debianusers.or.kr/index.php?title=Update-rc.d)
 
 ### 주의 사항
