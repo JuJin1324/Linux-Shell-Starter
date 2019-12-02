@@ -2,8 +2,29 @@
 리눅스 터미널에서 사용하는 명령어 관련 팁 정리
 
 ## 서비스 등록
-### 실행 스크립트 생성
-* /etc/init.d 디렉토리 밑에 실행 스크립트 생성 
+### 서비스 스크립트 생성
+* /etc/init.d 디렉토리 밑에 서비스 스크립트 생성 
+* 서비스 스크립트 규격
+```
+case $1 in
+ start)
+   <실행할 명령이나 스크립트명>
+   ;;
+ stop)
+   <중지할 명령이나 스크립트명>
+   ;;
+ restart)
+   <중지하고 다시 시작할 명령이나 스크립트명>
+   ;;
+ *)
+   echo "Usage: /etc/init.d/$NAME {start|stop|restart}"
+   exit 1;
+   ;;
+esac 
+
+exit 0
+```
+* 서비스 스크립트 예제
 ```
 $ cd /etc/init.d
 $ vi my_service
@@ -32,26 +53,6 @@ case "$1" in
     exit 1
     ;;
 esac
-exit 0
-```
-* 실행스크립트 규격
-```
-case $1 in
- start)
-   <실행할 명령이나 스크립트명>
-   ;;
- stop)
-   <중지할 명령이나 스크립트명>
-   ;;
- restart)
-   <중지하고 다시 시작할 명령이나 스크립트명>
-   ;;
- *)
-   echo "Usage: /etc/init.d/$NAME {start|stop|restart}"
-   exit 1;
-   ;;
-esac 
-
 exit 0
 ```
 ### update-rc.d 로 서비스 등록
