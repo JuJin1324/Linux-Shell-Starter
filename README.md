@@ -4,6 +4,36 @@
 ## 서비스 등록
 ### 실행 스크립트 생성
 * /etc/init.d 디렉토리 밑에 실행 스크립트 생성 
+```
+$ cd /etc/init.d
+$ vi my_service
+
+## my_service 내용
+#!/bin/sh
+
+NAME=myservice.sh
+case "$1" in
+  start)
+    echo -e "Starting My Service: "
+    start-stop-daemon -S -b -a /home/jujin/$NAME
+    echo -e "my_service started\n"
+    ;;
+  stop)
+    echo -e "Stop My Service: "
+    start-stop-daemon -K -n /home/jujin/$NAME
+    echo "stopped"
+    ;;
+  restart)
+    $0 stop
+    $0 start
+    ;;
+  *)
+    echo "Usage /etc/init.d/$NAME { start | stop | restart }" >&2
+    exit 1
+    ;;
+esac
+exit 0
+```
 * 실행스크립트 규격
 ```
 case $1 in
