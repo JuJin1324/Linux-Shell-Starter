@@ -1,6 +1,9 @@
 # Linux-terminal
 리눅스 터미널에서 사용하는 명령어 관련 팁 정리
 
+### syslog 기록되는 로그 파일 위치
+* /var/log/messages
+
 ## 서비스 등록
 ### 서비스 스크립트 생성
 * /etc/init.d 디렉토리 밑에 서비스 스크립트 생성 
