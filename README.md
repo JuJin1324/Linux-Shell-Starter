@@ -1,6 +1,9 @@
 # Linux-terminal
 리눅스 터미널에서 사용하는 명령어 관련 팁 정리
 
+### 현재 사용하는 쉘 확인
+* $ `echo $0`
+
 ### syslog 기록되는 로그 파일 위치
 * /var/log/messages
 
