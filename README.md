@@ -1,6 +1,24 @@
 # Linux-terminal
 리눅스 터미널에서 사용하는 명령어 관련 팁 정리
 
+## 서비스(Daemon)
+### 서비스(Daemon) 시작 / 종료
+* 서비스(데몬)으로 프로그램 시작 - $ `service [프로그램 이름] start`
+* 서비스(데몬) 프로그램 종료 - $ `service [프로그램 이름] stop` 
+### 부팅시 자동 시작되는 서비스
+* 실행 스크립트 생성
+    - /etc/init.d 디렉토리 밑에 실행 스크립트 생성 
+* update-rc.d 로 서비스 등록
+    - update-rc.d [-n | -f] <스크립트명> [remove | defaults] <실행순서>
+    - 서비스 등록 예시) /etc/init.d 아래 start_myProgram 실행 파일 있고 실행순서(우선순위)를 99로 원한다고 가정
+    - $ `update-rc.d start_myProgram defaults 99`
+* 서비스 삭제 예시)
+    - $ `update-rc.d -f start_myProgram remove`
+* 서비스 등록 확인 예시)
+    - CLI 서비스는 `/etc/rc3.d`에서 확인, GUI 서비스는 `/etc/rc5.d`에서 확인
+    - $ `ls /etc/rc3.d` 에서 `S99start_myProgram` 있는지 확인
+* 참조 사이트 : [링크](https://wiki.debianusers.or.kr/index.php?title=Update-rc.d)
+
 ### 백그라운드 프로세스
 * 현재 포그라운드로 실행중인 프로세스 일시정지 : `ctrl + z` 
 * 일시정지한 프로세스 목록 보기 : $ `jobs` 
