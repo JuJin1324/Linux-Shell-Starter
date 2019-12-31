@@ -113,36 +113,37 @@ exit 0
 ## 네트워크 관련 명령어
 ### netcat
 * 설치 : $ `yum -y install net-tools`
-* 용도1. 상대방 포트 열려 있는지 확인
-    - `nc -z [호스트주소] [포트]`
-    - 예제(123.456.789.101 서버 mysql(3306포트) 접속 가능한지 테스트) - `$ nc -z 123.456.789.101 3306`
-
-* 용도2. Listen 서버 띄우기 
-    - `nc -l [포트번호]`
-    - 예시) `$ nc -l 4321`
+* 사용법 
+    - 1. 외부 서버에 특정 포트로 접속이 가능한지 확인 : $ `nc -z [외부 서버 주소] [포트]`
+    - 예시(123.456.789.101 서버 mysql(3306포트) 접속 가능한지 테스트) : `$ nc -z 123.456.789.101 3306`
+    - 2. Listening 서버를 로컬에 띄우기 : $ `nc -l [포트]`
+    - 예시 : $ `nc -l 4321`
 * 참고 사이트 : [리눅스에서 현재 열려 있는 포트를 확인하는 방법](https://khie74.tistory.com/1169521441)
 
 ### ngrok
 * 주의 : 회원가입 필요(무료)
 * 설명 : 외부망에서 tcp 접속할 수 있도록 지정 포트를 ngrok에서 제공해주는 도메인 및 포트에 바인딩해준다.
-* ngrok tcp [지정 포트]  
-* 예시) `$ ngrok tcp 4321`
-
-* nslookup 을 통하여 ngrok 도메인에서 IP을 확인한다.   
-예시) `$ nslookup 0.tcp.ngrok.io`
-
+* 사용법 : `ngrok tcp [지정 포트]`
+* 예시 : $ `ngrok tcp 4321`
 * 참조 링크 : [공식사이트](https://ngrok.com)
 
-### 리눅스 서버에 현재 열려 있는 포트 확인
+### nslookup
+* 설명 : 특정 도메인에 맵핑된 IP 확인
+* 사용법 : `nslookup [도메인]`
+* 예시 : $ `nslookup 0.tcp.ngrok.io`
+
+### netstat
+* 설명 : 리눅스 서버에 현재 열려 있는 포트 확인
 * n:host명으로 표시 안함
 * a:모든소켓 표시
-* p:프로세스ID와 프로그램명 표시<pre>$ netstat -anp
-[LISTEN중인 포트 표시]
-$ netstat -anp | grep LISTEN
-</pre>참고 사이트 : [리눅스에서 현재 열려 있는 포트를 확인하는 방법](https://khie74.tistory.com/1169521441)
+* p:프로세스ID와 프로그램명 표시
+* 사용법 : `netstat -anp`
+* 예시(LISTEN중인 프로세스만 표시) : `$ netstat -anp | grep LISTEN`
+* 참고 사이트 : [리눅스에서 현재 열려 있는 포트를 확인하는 방법](https://khie74.tistory.com/1169521441)
 
-### 서버의 실시간 트래픽 확인 : iftop
-* iftop 설치
+### iftop
+* 설명 : 서버의 실시간 트래픽 확인
+* 설치 
 ```
 centOS 버전확인 -
 # grep . /etc/*-release
@@ -156,8 +157,9 @@ centOS 7 -
 ```
 * 사용법 참고 : https://ash84.net/2017/11/16/iftop-show-traffic/
 
-### 서버 접속 가능 및 경로 파악 : traceroute
-* `traceroute -p [포트] [서버 IP] -T`
+### traceroute
+* 설명 : 서버 접속 가능 및 경로 파악
+* 사용법 : `traceroute -p [포트] [서버 IP] -T`
 
 ### 탐색 관려 명령어
 * [리눅스 grep 명령어 사용법. (Linux grep command) - 리눅스 문자열 검색](https://recipes4dev.tistory.com/157)
@@ -179,10 +181,9 @@ $ find . -ctime +90 -exec rm -rf {} \;
 -r | 파일 및 디렉터리의 순서를 역순(reverse) 출력한다.
 * `$ ll -hSr`
 
-### 서버 제조사 확인 명령어
-```bash
-# dmidecode | more
-```
+### dmidecode
+* 설명 : 서버 제조사 확인
+* 사용법 및 예시 : `dmidecode | more`
 
 ### hosts 파일 위치
 * `/etc/hosts`
