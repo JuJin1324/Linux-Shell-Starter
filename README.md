@@ -150,17 +150,10 @@ centOS 7 -
 * 설명 : 서버 접속 가능 및 경로 파악
 * 사용법 : `traceroute -p [포트] [서버 IP] -T`
 
-### 탐색 관려 명령어
+## 탐색 관련 명령어
 * [리눅스 grep 명령어 사용법. (Linux grep command) - 리눅스 문자열 검색](https://recipes4dev.tistory.com/157)
 * [리눅스 awk 명령어 사용법. (Linux awk command) - 리눅스 파일 텍스트 데이터 검사, 조작, 출력.](https://recipes4dev.tistory.com/171?category=768818)
 * [리눅스(Linux) sort/uniq 명령어](https://websecurity.tistory.com/80)
-
-### 파일 관리
-* 90일 지난 로그 삭제
-```bash
-$ cd /data/project/logs
-$ find . -ctime +90 -exec rm -rf {} \;
-```
 
 ### ls 옵션
 옵션 | 설명
@@ -170,6 +163,14 @@ $ find . -ctime +90 -exec rm -rf {} \;
 -r | 파일 및 디렉터리의 순서를 역순(reverse) 출력한다.
 * `ll -hSr`
 
+## 파일 관련 명령어
+* 90일 지난 로그 삭제
+```bash
+$ cd /data/project/logs
+$ find . -ctime +90 -exec rm -rf {} \;
+```
+
+## 시스템 정보 관련 명령어
 ### dmidecode
 * 설명 : 서버 제조사 확인
 * 사용법 및 예시 : `dmidecode | more`
