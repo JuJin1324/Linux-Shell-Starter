@@ -16,7 +16,7 @@
     - `update-rc.d -f start_myProgram remove`
 * 서비스 등록 확인 예시)
     - CLI 서비스는 <b>/etc/rc3.d</b>에서 확인, GUI 서비스는 <b>/etc/rc5.d</b>에서 확인
-    - `ls /etc/rc3.d` 명령을 통해서 <b>S99start_myProgram</b. 있는지 확인
+    - `ls /etc/rc3.d` 명령을 통해서 <b>S99start_myProgram</b> 있는지 확인
 * 참조 사이트 : [링크](https://wiki.debianusers.or.kr/index.php?title=Update-rc.d)
 
 ### 백그라운드 프로세스
