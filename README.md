@@ -110,8 +110,54 @@ exit 0
   * 변경 이후 `$ service ssh restart`로 재시작한다.
 * 참고사이트 : [링크](http://programmingskills.net/archives/315)
 
-### 네트워크 관련 명령어
-* [네트워크 관련 명령어](https://github.com/JuJin1324/Linux-terminal/wiki/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EA%B4%80%EB%A0%A8-%EB%AA%85%EB%A0%B9%EC%96%B4)
+## 네트워크 관련 명령어
+### netcat
+* 설치 : $ `yum -y install net-tools`
+* 용도1. 상대방 포트 열려 있는지 확인
+    - `nc -z [호스트주소] [포트]`
+    - 예제(123.456.789.101 서버 mysql(3306포트) 접속 가능한지 테스트) - `$ nc -z 123.456.789.101 3306`
+
+* 용도2. Listen 서버 띄우기 
+    - `nc -l [포트번호]`
+    - 예시) `$ nc -l 4321`
+* 참고 사이트 : [리눅스에서 현재 열려 있는 포트를 확인하는 방법](https://khie74.tistory.com/1169521441)
+
+### ngrok
+* 주의 : 회원가입 필요(무료)
+* 설명 : 외부망에서 tcp 접속할 수 있도록 지정 포트를 ngrok에서 제공해주는 도메인 및 포트에 바인딩해준다.
+* ngrok tcp [지정 포트]  
+* 예시) `$ ngrok tcp 4321`
+
+* nslookup 을 통하여 ngrok 도메인에서 IP을 확인한다.   
+예시) `$ nslookup 0.tcp.ngrok.io`
+
+* 참조 링크 : [공식사이트](https://ngrok.com)
+
+### 리눅스 서버에 현재 열려 있는 포트 확인
+* n:host명으로 표시 안함
+* a:모든소켓 표시
+* p:프로세스ID와 프로그램명 표시<pre>$ netstat -anp
+[LISTEN중인 포트 표시]
+$ netstat -anp | grep LISTEN
+</pre>참고 사이트 : [리눅스에서 현재 열려 있는 포트를 확인하는 방법](https://khie74.tistory.com/1169521441)
+
+### 서버의 실시간 트래픽 확인 : iftop
+* iftop 설치
+```
+centOS 버전확인 -
+# grep . /etc/*-release
+
+centOS 6 -
+# wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm;rpm -Uvh epel-release-6-8.noarch.rpm
+# yum install iftop
+
+centOS 7 -
+# yum install epel-release;yum install iftop
+```
+* 사용법 참고 : https://ash84.net/2017/11/16/iftop-show-traffic/
+
+### 서버 접속 가능 및 경로 파악 : traceroute
+* `traceroute -p [포트] [서버 IP] -T`
 
 ### 탐색 관려 명령어
 * [리눅스 grep 명령어 사용법. (Linux grep command) - 리눅스 문자열 검색](https://recipes4dev.tistory.com/157)
