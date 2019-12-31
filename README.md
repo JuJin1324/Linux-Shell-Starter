@@ -121,11 +121,11 @@ exit 0
 * 참고 사이트 : [리눅스에서 현재 열려 있는 포트를 확인하는 방법](https://khie74.tistory.com/1169521441)
 
 ### ngrok
-* 주의 : 회원가입 필요(무료)
 * 설명 : 외부망에서 tcp 접속할 수 있도록 지정 포트를 ngrok에서 제공해주는 도메인 및 포트에 바인딩해준다.
+* 공식 사이트 : [링크](https://ngrok.com)
+* 주의 : 회원가입 필요(무료)
 * 사용법 : `ngrok tcp [지정 포트]`
 * 예시 : $ `ngrok tcp 4321`
-* 참조 링크 : [공식사이트](https://ngrok.com)
 
 ### nslookup
 * 설명 : 특정 도메인에 맵핑된 IP 확인
@@ -138,7 +138,7 @@ exit 0
 * a:모든소켓 표시
 * p:프로세스ID와 프로그램명 표시
 * 사용법 : `netstat -anp`
-* 예시(LISTEN중인 프로세스만 표시) : `$ netstat -anp | grep LISTEN`
+* 예시(LISTEN중인 프로세스만 표시) : $ `netstat -anp | grep LISTEN`
 * 참고 사이트 : [리눅스에서 현재 열려 있는 포트를 확인하는 방법](https://khie74.tistory.com/1169521441)
 
 ### iftop
@@ -179,11 +179,11 @@ $ find . -ctime +90 -exec rm -rf {} \;
 -S | 파일의 크기순으로 출력된다.
 -h | 용량 간소표시(K, M, G, T 등으로)
 -r | 파일 및 디렉터리의 순서를 역순(reverse) 출력한다.
-* `$ ll -hSr`
+* $ `ll -hSr`
 
 ### dmidecode
 * 설명 : 서버 제조사 확인
-* 사용법 및 예시 : `dmidecode | more`
+* 사용법 및 예시 : $ `dmidecode | more`
 
 ### hosts 파일 위치
 * `/etc/hosts`
