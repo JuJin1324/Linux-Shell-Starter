@@ -9,7 +9,7 @@
 * 실행 스크립트 생성
     - /etc/init.d 디렉토리 밑에 실행 스크립트 생성 
 * update-rc.d 로 서비스 등록
-    - update-rc.d [-n | -f] <스크립트명> [remove | defaults] <실행순서>
+    - 사용법 : `update-rc.d [-n | -f] <스크립트명> [remove | defaults] <실행순서>`
     - 서비스 등록 예시) <b>/etc/init.d</b> 아래 <b>start_myProgram</b> 실행 파일 있고 실행순서(우선순위)를 99로 원한다고 가정
     - `update-rc.d start_myProgram defaults 99`
 * 서비스 삭제 예시)
