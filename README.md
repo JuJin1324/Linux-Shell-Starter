@@ -90,7 +90,7 @@ exit 0
 
 ## ssh server
 ### 설치 
-* 우분투(Ubuntu) : `apt-get install openssh-server`
+* Ubuntu : `sudo apt-get install -y openssh-server`
 ### 설정
 * 위치 : /etc/ssh
 * ssh_host_res_key : 해당 리눅스 접속을 위한 프라이빗 키
@@ -101,7 +101,9 @@ exit 0
 
 ## 네트워크 관련 명령어
 ### netcat
-* 설치 : `yum -y install net-tools`
+* 설치 
+ - Ubuntu : 선탑재
+ - centOS : `yum -y install net-tools`
 * 사용법 
     - 1. 외부 서버에 특정 포트로 접속이 가능한지 확인 : `nc -z [외부 서버 주소] [포트]`
     - 예시(123.456.789.101 서버 mysql(3306포트) 접속 가능한지 테스트) : $ `nc -z 123.456.789.101 3306`
@@ -113,6 +115,8 @@ exit 0
 * 설명 : 외부망에서 tcp 접속할 수 있도록 지정 포트를 ngrok에서 제공해주는 도메인 및 포트에 바인딩해준다.
 * 공식 사이트 : [링크](https://ngrok.com)
 * 주의 : 회원가입 필요(무료)
+* 설치
+ - Ubuntu : snap을 이용하여 설치 `snap install ngrok`
 * 사용법 : `ngrok tcp [지정 포트]`
 * 예시 : `ngrok tcp 4321`
 
@@ -148,6 +152,8 @@ centOS 7 -
 
 ### traceroute
 * 설명 : 서버 접속 가능 및 경로 파악
+* 설치
+ - Ubuntu : `sudo apt-get install -y traceroute`
 * 사용법 : `traceroute -p [포트] [서버 IP] -T`
 
 ## 탐색 관련 명령어
