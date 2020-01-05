@@ -1,7 +1,11 @@
-# Linux-terminal
-리눅스 터미널에서 사용하는 명령어 관련 팁 정리
+# Shell-Starter
+쉘(Shell)에서 사용하는 명령어 관련 팁 정리
 
-## 리눅스 외부 접속
+## 정보 확인하기
+### 현재 사용하는 쉘 확인
+* $ `echo $0`
+
+## 외부 접속
 ### ssh server
 * 설치 
  - Ubuntu : `sudo apt-get install -y openssh-server`
@@ -19,8 +23,7 @@
 * jobs에서 보이는 목록 앞에 숫자에 해당하는 프로그램 시작 : `fg %[숫자]` 
 * 숫자에 해당하는 프로세스 종료 : `kill %[숫자]` 
 
-### 현재 사용하는 쉘 확인
-* $ `echo $0`
+
 
 ### syslog 기록되는 로그 파일 위치
 * /var/log/messages
