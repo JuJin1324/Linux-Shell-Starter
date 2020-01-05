@@ -1,32 +1,47 @@
 # Shell-Starter
-쉘(Shell)에서 사용하는 명령어 관련 팁 정리
+리눅스에서 사용하는 쉘(Shell) 명령어 관련 팁 정리
 
-## 정보 확인하기
+## 리눅스 관련 정보 확인하기
 ### 현재 사용하는 쉘 확인
 * $ `echo $0`
 
-## 외부 접속
-### ssh server
-* 설치 
- - Ubuntu : `sudo apt-get install -y openssh-server`
- - Windows : `scoop install openssh-server`
-* 설정
- - 위치 : /etc/ssh
- - ssh_host_res_key : 해당 리눅스 접속을 위한 프라이빗 키
- - sshd_config : ssh 접근을 위한 config 파일, 변경 이후 `service ssh restart`로 재시작한다.
-* 참고사이트 : [링크](http://programmingskills.net/archives/315)
+### syslog 기록되는 로그 파일 위치
+* /var/log/messages
 
+### dmidecode
+* 설명 : 서버 제조사 확인
+* 사용법 및 예시 : `dmidecode | more`
+
+### hosts 파일 위치
+* `/etc/hosts`
+
+## 탐색 관련 명령어
+* [리눅스 grep 명령어 사용법. (Linux grep command) - 리눅스 문자열 검색](https://recipes4dev.tistory.com/157)
+* [리눅스 awk 명령어 사용법. (Linux awk command) - 리눅스 파일 텍스트 데이터 검사, 조작, 출력.](https://recipes4dev.tistory.com/171?category=768818)
+* [리눅스(Linux) sort/uniq 명령어](https://websecurity.tistory.com/80)
+
+### ls 옵션
+옵션 | 설명
+----|----
+-S | 파일의 크기순으로 출력된다.
+-h | 용량 간소표시(K, M, G, T 등으로)
+-r | 파일 및 디렉터리의 순서를 역순(reverse) 출력한다.
+* `ll -hSr`
+
+## 파일 관련 명령어
+* 90일 지난 로그 삭제
+```bash
+$ cd /data/project/logs
+$ find . -ctime +90 -exec rm -rf {} \;
+```
+
+## 프로세스
 ### 백그라운드 프로세스
 * 현재 포그라운드로 실행중인 프로세스 일시정지 : `ctrl + z` 
 * 일시정지한 프로세스 목록 보기 : `jobs` 
 * 가장 최근 멈춘 프로그램 재시작 : `fg`  
 * jobs에서 보이는 목록 앞에 숫자에 해당하는 프로그램 시작 : `fg %[숫자]` 
 * 숫자에 해당하는 프로세스 종료 : `kill %[숫자]` 
-
-
-
-### syslog 기록되는 로그 파일 위치
-* /var/log/messages
 
 ## 서비스(Daemon)
 ### 서비스(Daemon) 시작 / 종료
@@ -101,95 +116,3 @@ exit 0
     - `ls /etc/rc3.d` 명령을 통해서 <b>S99start_myProgram</b> 있는지 확인
 * 참조 사이트 : [링크](https://wiki.debianusers.or.kr/index.php?title=Update-rc.d)
 * 주의 사항 : 서비스 실행시에 실행 디렉토리는 루트(/)로 지정됨으로 해당 실행파일과 상대경로로 연결된 파일이 있을 경우 정상 동작하지 않을 수 있다.
-
-## 네트워크 관련 명령어
-### netcat
-* 설치 
- - Ubuntu : 선탑재
- - macOS : `brew install netcat`
- - Windows : `scoop install netcat`
-* 사용법 
-    - 1. 외부 서버에 특정 포트로 접속이 가능한지 확인 : `nc -z [외부 서버 주소] [포트]`
-    - 예시(123.456.789.101 서버 mysql(3306포트) 접속 가능한지 테스트) : $ `nc -z 123.456.789.101 3306`
-    - 2. Listening 서버를 로컬에 띄우기 : `nc -l [포트]`
-    - 예시 : `nc -l 4321`
-* 참고 사이트 : [리눅스에서 현재 열려 있는 포트를 확인하는 방법](https://khie74.tistory.com/1169521441)
-
-### ngrok
-* 설명 : 외부망에서 tcp 접속할 수 있도록 지정 포트를 ngrok에서 제공해주는 도메인 및 포트에 바인딩해준다.
-* 공식 사이트 : [링크](https://ngrok.com)
-* 주의 : 회원가입 필요(무료)
-* 설치
- - Ubuntu : `snap install ngrok`
- - macOS : `brew install ngrok`
- - Windows : `scoop install ngrok`
-* 사용법 : `ngrok tcp [지정 포트]`
-* 예시 : `ngrok tcp 4321`
-
-### nslookup
-* 설명 : 특정 도메인에 맵핑된 IP 확인
-* 사용법 : `nslookup [도메인]`
-* 예시 : `nslookup 0.tcp.ngrok.io`
-
-### netstat
-* 설명 : 리눅스 서버에 현재 열려 있는 포트 확인
-* 설치
- - Ubuntu : `sudo apt-get install -y net-tools`
- - macOS : 선탑재
- - Windows : 선탑재
-* n:host명으로 표시 안함
-* a:모든소켓 표시
-* p:프로세스ID와 프로그램명 표시
-* 사용법 : `netstat -anp`
-* 예시(LISTEN중인 프로세스만 표시) : `netstat -anp | grep LISTEN`
-* 참고 사이트 : [리눅스에서 현재 열려 있는 포트를 확인하는 방법](https://khie74.tistory.com/1169521441)
-
-### iftop
-* 설명 : 서버의 실시간 트래픽 확인
-* 설치 
-```
-centOS 버전확인 -
-# grep . /etc/*-release
-
-centOS 6 -
-# wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm;rpm -Uvh epel-release-6-8.noarch.rpm
-# yum install iftop
-
-centOS 7 -
-# yum install epel-release;yum install iftop
-```
-* 사용법 참고 : https://ash84.net/2017/11/16/iftop-show-traffic/
-
-### traceroute
-* 설명 : 서버 접속 가능 및 경로 파악
-* 설치
- - Ubuntu : `sudo apt-get install -y traceroute`
-* 사용법 : `traceroute -p [포트] [서버 IP] -T`
-
-## 탐색 관련 명령어
-* [리눅스 grep 명령어 사용법. (Linux grep command) - 리눅스 문자열 검색](https://recipes4dev.tistory.com/157)
-* [리눅스 awk 명령어 사용법. (Linux awk command) - 리눅스 파일 텍스트 데이터 검사, 조작, 출력.](https://recipes4dev.tistory.com/171?category=768818)
-* [리눅스(Linux) sort/uniq 명령어](https://websecurity.tistory.com/80)
-
-### ls 옵션
-옵션 | 설명
-----|----
--S | 파일의 크기순으로 출력된다.
--h | 용량 간소표시(K, M, G, T 등으로)
--r | 파일 및 디렉터리의 순서를 역순(reverse) 출력한다.
-* `ll -hSr`
-
-## 파일 관련 명령어
-* 90일 지난 로그 삭제
-```bash
-$ cd /data/project/logs
-$ find . -ctime +90 -exec rm -rf {} \;
-```
-
-## 시스템 정보 관련 명령어
-### dmidecode
-* 설명 : 서버 제조사 확인
-* 사용법 및 예시 : `dmidecode | more`
-
-### hosts 파일 위치
-* `/etc/hosts`
