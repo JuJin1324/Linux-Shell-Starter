@@ -1,6 +1,17 @@
 # Linux-terminal
 리눅스 터미널에서 사용하는 명령어 관련 팁 정리
 
+## 리눅스 외부 접속
+### ssh server
+* 설치 
+ - Ubuntu : `sudo apt-get install -y openssh-server`
+ - Windows : `scoop install openssh-server`
+* 설정
+ - 위치 : /etc/ssh
+ - ssh_host_res_key : 해당 리눅스 접속을 위한 프라이빗 키
+ - sshd_config : ssh 접근을 위한 config 파일, 변경 이후 `service ssh restart`로 재시작한다.
+* 참고사이트 : [링크](http://programmingskills.net/archives/315)
+
 ### 백그라운드 프로세스
 * 현재 포그라운드로 실행중인 프로세스 일시정지 : `ctrl + z` 
 * 일시정지한 프로세스 목록 보기 : `jobs` 
@@ -88,22 +99,12 @@ exit 0
 * 참조 사이트 : [링크](https://wiki.debianusers.or.kr/index.php?title=Update-rc.d)
 * 주의 사항 : 서비스 실행시에 실행 디렉토리는 루트(/)로 지정됨으로 해당 실행파일과 상대경로로 연결된 파일이 있을 경우 정상 동작하지 않을 수 있다.
 
-## ssh server
-### 설치 
-* Ubuntu : `sudo apt-get install -y openssh-server`
-### 설정
-* 위치 : /etc/ssh
-* ssh_host_res_key : 해당 리눅스 접속을 위한 프라이빗 키
-* sshd_config 
-  * ssh 접근을 위한 config 파일
-  * 변경 이후 `service ssh restart`로 재시작한다.
-* 참고사이트 : [링크](http://programmingskills.net/archives/315)
-
 ## 네트워크 관련 명령어
 ### netcat
 * 설치 
  - Ubuntu : 선탑재
- - centOS : `yum -y install net-tools`
+ - macOS : `brew install netcat`
+ - Windows : `scoop install netcat`
 * 사용법 
     - 1. 외부 서버에 특정 포트로 접속이 가능한지 확인 : `nc -z [외부 서버 주소] [포트]`
     - 예시(123.456.789.101 서버 mysql(3306포트) 접속 가능한지 테스트) : $ `nc -z 123.456.789.101 3306`
@@ -116,7 +117,9 @@ exit 0
 * 공식 사이트 : [링크](https://ngrok.com)
 * 주의 : 회원가입 필요(무료)
 * 설치
- - Ubuntu : snap을 이용하여 설치 `snap install ngrok`
+ - Ubuntu : `snap install ngrok`
+ - macOS : `brew install ngrok`
+ - Windows : `scoop install ngrok`
 * 사용법 : `ngrok tcp [지정 포트]`
 * 예시 : `ngrok tcp 4321`
 
@@ -127,6 +130,10 @@ exit 0
 
 ### netstat
 * 설명 : 리눅스 서버에 현재 열려 있는 포트 확인
+* 설치
+ - Ubuntu : `sudo apt-get install -y net-tools`
+ - macOS : 선탑재
+ - Windows : 선탑재
 * n:host명으로 표시 안함
 * a:모든소켓 표시
 * p:프로세스ID와 프로그램명 표시
