@@ -1,4 +1,4 @@
-# Shell-Starter
+# Linux-Shell-Starter
 리눅스에서 사용하는 쉘(Shell) 명령어 관련 팁 정리
 
 ## 리눅스 관련 정보 확인하기
